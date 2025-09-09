@@ -3,6 +3,20 @@ import streamlit as st
 import requests
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
+import os
+import gdown
+
+files = {
+    "movie_list.pkl": "1PyRryWlP1MeO3R8wb4-ugbhPoEEIZusB",
+    "similarity.pkl": "1OKsCvBI4NtYZQNKw5qMZM4jZRFgu7WSj"
+}
+
+for filename, file_id in files.items():
+    if not os.path.exists(filename):
+        print(f"Downloading {filename}...")
+        url = f"https://drive.google.com/uc?id={file_id}"
+        gdown.download(url, filename, quiet=False)
+
 
 
 API_KEY ='2cc9eb5e66cd0d5e0b8ca4f7d8674fdc'
